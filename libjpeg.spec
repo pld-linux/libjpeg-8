@@ -1,17 +1,18 @@
-Summary:	Library for handling different jpeg files.
+Summary:	Library for handling different jpeg files
 Summary(de):	Library zum Verarbeiten verschiedener jpeg-Dateien
 Summary(fr):	Bibliothèque pour gérer différents fichiers jpeg
 Summary(pl):	Biblioteki do manipulacji plikami w ró¿nych formatach jpeg
 Summary(tr):	jpeg resimlerini iþleme kitaplýðý
 Name:		libjpeg
 Version:	6b
-Release:	12
+Release:	13
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
 Patch0:		libjpeg-DESTDIR.patch
 Patch1:		libjpeg-arm.patch
+BuildRequires:	libtool
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -36,8 +37,8 @@ Bu paket, jpeg þekillerini iþlemek için kitaplýklar ve basit istemciler içerir.
 Summary:	headers for developing programs using libjpeg
 Summary(de):	Header und statische Libraries zum Entwickeln von Programmen mit libjpeg
 Summary(fr):	Bibliothèques statiques et en-têtes pour développer avec libjpeg
-Summary(tr):	libjpeg için geliþtirme kitaplýklarý ve baþlýk dosyalarý
 Summary(pl):	Pliki nag³ówkowe libjpeg
+Summary(tr):	libjpeg için geliþtirme kitaplýklarý ve baþlýk dosyalarý
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -111,6 +112,7 @@ Statyczna bibliteka libjpeg.
 %patch1 -p1
 
 %build
+cp -f /usr/share/libtool/config.sub .
 LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-shared \
@@ -126,7 +128,9 @@ install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 make DESTDIR=$RPM_BUILD_ROOT \
 	install install-headers install-lib
 
-strip $RPM_BUILD_ROOT/{%{_libdir}/lib*so.*.*,%{_bindir}/*}
+install jversion.h $RPM_BUILD_ROOT%{_includedir}
+
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*so.*.*
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	{libjpeg,structure}.doc
