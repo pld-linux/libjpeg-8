@@ -126,13 +126,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644, root, root, 755)
-%attr(755,root,root) /usr/lib/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644, root, root, 755)
 %doc {libjpeg,structure}.doc.gz
 
-%attr(755,root,root) /usr/lib/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.so
 /usr/include/*.h
 
 %files progs
@@ -142,7 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files static
 %defattr(644, root, root, 755)
-/usr/lib/lib*.a
+%{_libdir}/lib*.a
 
 %changelog
 * Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
