@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do manipulacji plikami w ró¿nych formatach jpeg
 Summary(tr):	jpeg resimlerini iþleme kitaplýðý
 Name:		libjpeg
 Version:	6b
-Release:	9
+Release:	10
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -33,7 +33,7 @@ Summary:	headers for developing programs using libjpeg
 Summary(de):	Header und statische Libraries zum Entwickeln von Programmen mit libjpeg
 Summary(fr):	Bibliothèques statiques et en-têtes pour développer avec libjpeg
 Summary(tr):	libjpeg için geliþtirme kitaplýklarý ve baþlýk dosyalarý
-Summary(pl):	Pliki nag³ówkowe jpeg
+Summary(pl):	Pliki nag³ówkowe libjpeg
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -81,7 +81,7 @@ Kilka prostych programów do manipulowania na plikach jpeg.
 
 %package static
 Summary:	Static libraries for developing programs using libjpeg
-Summary(pl):	Biblioteki statyczne jpeg
+Summary(pl):	Biblioteki statyczne libjpeg
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -90,7 +90,7 @@ Requires:	%{name}-devel = %{version}
 Static libraries for developing programs using libjpeg
 
 %description -l pl static
-Statyczna bibliteka jpeg.
+Statyczna bibliteka libjpeg.
 
 %prep
 %setup -q -n jpeg-%{version}
@@ -108,6 +108,7 @@ LD_LIBRARY_PATH=$PWD make test
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/usr/{lib,include,bin,man/man1}
+
 make install
 make install-headers
 make install-lib
@@ -115,7 +116,7 @@ make install-lib
 strip $RPM_BUILD_ROOT/usr/{lib/lib*so.*.*,/bin/*}
 
 gzip -9nf $RPM_BUILD_ROOT/usr/man/man1/*
-bzip2 -9 {libjpeg,structure}.doc
+gzip -9nf {libjpeg,structure}.doc
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -128,7 +129,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644, root, root, 755)
-%doc {libjpeg,structure}.doc.bz2
+%doc {libjpeg,structure}.doc.gz
 
 %attr(755,root,root) /usr/lib/lib*.so
 /usr/include/*.h
@@ -141,6 +142,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644,root,root) /usr/lib/lib*.a
 
 %changelog
+* Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
+  [6b-10]
+- gzipping documentation (instead bzipping)
+- fixed pl translation
+
 * Wed Feb 24 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [6b-9]
 - added using %%{version} macro in Source,
