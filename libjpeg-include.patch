@@ -1,0 +1,13 @@
+--- jpeg-6b/jpeglib.h
++++ jpeg-6b.new/jpeglib.h
+@@ -24 +24 @@
+-#include "jconfig.h"		/* widely used configuration options */
++#include <jconfig.h>		/* widely used configuration options */
+@@ -26 +26 @@
+-#include "jmorecfg.h"		/* seldom changed options */
++#include <jmorecfg.h>		/* seldom changed options */
+@@ -1092,2 +1092,2 @@
+-#include "jpegint.h"		/* fetch private declarations */
+-#include "jerror.h"		/* fetch error codes too */
++#include <jpegint.h>		/* fetch private declarations */
++#include <jerror.h>		/* fetch error codes too */
