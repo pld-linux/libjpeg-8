@@ -5,23 +5,26 @@ Summary(pl):	Biblioteki do manipulacji plikami w ró¿nych formatach jpeg
 Summary(tr):	jpeg resimlerini iþleme kitaplýðý
 Name:		libjpeg
 Version:	6b
-Release:	11
+Release:	12
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
-Patch:		libjpeg-DESTDIR.patch
+Patch0:		libjpeg-DESTDIR.patch
+Patch1:		libjpeg-arm.patch
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
-This package is a library of functions that manipulate jpeg images
+The libjpeg package contains a library of functions for manipulating JPEG
+images.
 
 %description -l de
-Dieses Paket ist eine Library mit Funktionen zur Manipulation von 
-jpeg-Bildern.
+Dieses Paket ist eine Library mit Funktionen zur Manipulation von
+jpeg-Bildern, zusammen mit einfachen Clients zur Manipulation von jpeg-
 
 %description -l fr
-Bibliothèque de fonctions qui manipulent des images jpeg
+Bibliothèque de fonctions qui manipulent des images jpeg, et clients simples
+pour manipuler de telles images.
 
 %description -l pl
 Ten pakiet zawiera bibliotekê funkcji do manipulacji plikami jpeg.
@@ -40,8 +43,13 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description devel
-This package is all you need to develop programs that manipulate jpeg
-images, including documentation.
+The libjpeg-devel package includes the header files and static libraries
+necessary for developing programs which will manipulate JPEG files using the
+libjpeg library.
+
+If you are going to develop programs which will manipulate JPEG images, you
+should install libjpeg-devel. You'll also need to have the libjpeg package
+installed.
 
 %description -l de devel
 Dieses Paket bietet alles, was Sie brauchen, um Programme zur Manipulation
@@ -69,7 +77,11 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description progs
-Simple clients for manipulating jpeg images.
+Simple clients for manipulating jpeg images. Libjpeg client programs include
+cjpeg, djpeg, jpegtran, rdjpgcom and wrjpgcom. Djpeg decompresses a JPEG
+file into a regular image file. Jpegtran can perform various useful
+transformations on JPEG files. Rdjpgcom displays any text comments included
+in a JPEG file. Wrjpgcom inserts text comments into a JPEG file.
 
 %description progs -l de
 Einfachen Clients zur Manipulation von jpeg.
@@ -88,14 +100,15 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
 %description static
-Static libraries for developing programs using libjpeg
+Static libraries for developing programs using libjpeg.
 
 %description -l pl static
 Statyczna bibliteka libjpeg.
 
 %prep
-%setup -q -n jpeg-%{version}
-%patch -p1
+%setup  -q -n jpeg-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 LDFLAGS="-s"; export LDFLAGS
@@ -133,6 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc {libjpeg,structure}.doc.gz
 
 %attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
 %{_includedir}/*.h
 
 %files progs
