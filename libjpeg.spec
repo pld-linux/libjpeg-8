@@ -56,20 +56,20 @@ If you are going to develop programs which will manipulate JPEG
 images, you should install libjpeg-devel. You'll also need to have the
 libjpeg package installed.
 
-%description -l de devel
+%description devel -l de
 Dieses Paket bietet alles, was Sie brauchen, um Programme zur
 Manipulation von jpeg-Grafiken, einschließlich Dokumentation, zu
 entwickeln.
 
-%description -l fr devel
+%description devel -l fr
 Ce package est tout ce dont vous avez besoin pour développer des
 programmes manipulant des images jpg, et comprend la documentation.
 
-%description -l pl devel
+%description devel -l pl
 Ten pakiet pozwoli Ci na programowanie z wykorzystniem formatu jpeg.
 Zawiera tak¿e dokumentacjê.
 
-%description -l tr devel
+%description devel -l tr
 Bu paket, jpeg resimlerini iþleyen programlar geliþtirmeniz için
 gereken baþlýk dosyalarýný, kitaplýklarý ve ilgili yardým belgelerini
 içerir.
@@ -108,7 +108,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Static libraries for developing programs using libjpeg.
 
-%description -l pl static
+%description static -l pl
 Statyczna biblioteka libjpeg.
 
 %prep
