@@ -96,7 +96,7 @@ Statyczna bibliteka libjpeg.
 %setup -q -n jpeg-%{version}
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+CFLAGS="$RPM_OPT_FLAGS -g" LDFLAGS="-s" \
 ./configure %{_target_platform} \
 	--prefix=$RPM_BUILD_ROOT%{_prefix} \
 	--enable-shared \
