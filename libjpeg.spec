@@ -1,24 +1,36 @@
 Summary:     Library for handling different jpeg files.
 Summary(de): Library zum Verarbeiten verschiedener jpeg-Dateien
 Summary(fr): Bibliothèque pour gérer différents fichiers jpeg
+Summary(pl): Biblioteka do manipulacji ró¿nymi plikami w formacie jpeg
 Summary(tr): jpeg resimlerini iþleme kitaplýðý
 Name:        libjpeg
 Version:     6b
-Release:     6
+Release:     8
 Copyright:   distributable
 Group:       Libraries
 Source0:     ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
 Buildroot:   /tmp/%{name}-%{version}-root
 
 %description
-This package is a library of functions that manipulate jpeg images, along
-with simple clients for manipulating jpeg images.
+This package is a library of functions that manipulate jpeg images
+
+%description -l de
+Dieses Paket ist eine Library mit Funktionen zur Manipulation von 
+jpeg-Bildern.
+
+%description -l fr
+Bibliothèque de fonctions qui manipulent des images jpeg
+
+%description -l pl
+Ten pakiet zawiera bibliotekê funkcji do manipulacji plikami jpeg.
+
+%description -l tr
+Bu paket, jpeg þekillerini iþlemek için kitaplýklar ve basit istemciler içerir.
 
 %package devel
-Summary:     headers and static libraries for developing programs using libjpeg
-Summary(de): Header und statische Libraries zum Entwickeln von Programmen mit libjpeg
-Summary(fr): Bibliothèques statiques et en-têtes pour développer avec libjpeg
-Summary(tr): libjpeg için geliþtirme kitaplýklarý ve baþlýk dosyalarý
+Summary:     header files for developing programs using libjpeg
+Summary(de): Header zum Entwickeln von Programmen mit libjpeg
+Summary(pl): Pliki nag³ówkowe do biblioteki jpeg
 Group:       Development/Libraries
 Requires:    %{name} = %{version}
 
@@ -30,25 +42,49 @@ images, including documentation.
 Dieses Paket bietet alles, was Sie brauchen, um Programme zur Manipulation
 von jpeg-Grafiken, einschließlich Dokumentation, zu entwickeln.
 
-%description -l de
-Dieses Paket ist eine Library mit Funktionen zur Manipulation von 
-jpeg-Bildern, zusammen mit einfachen Clients zur Manipulation von jpeg-
-
-
 %description -l fr devel
 Ce package est tout ce dont vous avez besoin pour développer des
 programmes manipulant des images jpg, et comprend la documentation.
 
-%description -l fr
-Bibliothèque de fonctions qui manipulent des images jpeg, et clients simples
-pour manipuler de telles images.
+%description -l pl devel
+Ten pakiet pozwoli Ci na programowanie z wykorzystniem formatu jpeg.
+Zawiera tak¿e dokumentacjê.
 
 %description -l tr devel
 Bu paket, jpeg resimlerini iþleyen programlar geliþtirmeniz için gereken
 baþlýk dosyalarýný, kitaplýklarý ve ilgili yardým belgelerini içerir.
 
-%description -l tr
-Bu paket, jpeg þekillerini iþlemek için kitaplýklar ve basit istemciler içerir.
+%package progs
+Summary:     Simple clients for manipulating jpeg images
+Summary(de): Einfachen Clients zur Manipulation von jpeg
+Summary(fr): Clients simples pour manipuler de telles images
+Summary(pl): Kilka prostych programów do manipulowania na plikach jpeg
+Group:       Development/Libraries
+Requires:    %{name} = %{version}
+
+%description progs
+Simple clients for manipulating jpeg images.
+
+%description progs -l de
+Einfachen Clients zur Manipulation von jpeg.
+
+%description progs -l fr
+Clients simples pour manipuler de telles images.
+
+%description progs -l pl
+Kilka prostych programów do manipulowania na plikach jpeg.
+
+%package static
+Summary:     Static jpeg library
+Summary(pl): Statyczna bibliteka jpeg
+Group:       Development/Libraries
+Requires:    %{name}-devel = %{version}
+
+%description static
+Static jpeg library
+
+%description static -l pl
+Statyczna bibliteka jpeg.
 
 %prep
 %setup -q -n jpeg-%{version}
@@ -62,12 +98,12 @@ LD_LIBRARY_PATH=$PWD make test
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/usr/{lib,include,bin,man/man1}
+install -d $RPM_BUILD_ROOT/usr/{lib,include,bin,man/man1}
 make install
 make install-headers
 make install-lib
 
-strip $RPM_BUILD_ROOT/usr/{lib/lib*.so.*.*,bin/*}
+strip $RPM_BUILD_ROOT/usr/{lib/lib*so.*.*,/bin/*}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -76,31 +112,40 @@ strip $RPM_BUILD_ROOT/usr/{lib/lib*.so.*.*,bin/*}
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(755, root, root, 755)
-/usr/lib/lib*.so.*.*
-/usr/bin/*
-%attr(644, root, man) /usr/man/*/*
+%attr(755, root, root) /usr/lib/lib*.so.*.*
 
 %files devel
 %defattr(644, root, root, 755)
-/usr/lib/lib*.a
-/usr/lib/lib*.so
+%doc libjpeg.doc structure.doc
+/usr/lib/*.so
 /usr/include/*.h
 
+%files progs
+%attr(755, root, root) /usr/bin/*
+%attr(644, root,  man) /usr/man/man1/*
+
+%files static
+%attr(644, root, root) /usr/lib/*.a
+
 %changelog
-* Fri Jul 17 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [6b-6]
-- added -q %setup parameter,
-- added using %%{name} macro to Source an %setup,
+* Sat Aug  8 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [6b-8]
+- modified pl translation,
+- added -q %setup parameter and added using %%{version} in -n,
 - Buildroot changed to /tmp/%%{name}-%%{version}-root,
-- added striping programs and shared libs,
-- changed dependences for devel subpackage to
-  "Requires: %%{name} = %%{version}",
-- added %defattr and %attr macros in %files (allows building package from
-  non-root account).
+- added static and progs subpackages,
+- some modification in %files,
+- removed *.la files from devel,
+- added using %%{version} macro in Source,
+- added striping shared libs and binaries,
+- changed Requires to "Requires: %%{name}-%%{version}".
+
+* Thu Jul 16 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+  [6b-7]
+- added polish desciptions,
+- added %defattr support.
 
 * Tue Jun 09 1998 Prospector System <bugs@redhat.com>
-  [6b-5]
 - translations modified for de
 
 * Thu Jun 04 1998 Marc Ewing <marc@redhat.com>
