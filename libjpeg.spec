@@ -137,7 +137,7 @@ rm -rf $RPM_BUILD_ROOT
 - some modification in %files,
 - removed *.la files from devel,
 - added using %%{version} macro in Source,
-- added striping shared libs and binaries,
+- added stripping shared libs and binaries,
 - add libjpeg.doc structure.doc to devel %doc,
 - changed Requires to "Requires: %%{name}-%%{version}".
 
