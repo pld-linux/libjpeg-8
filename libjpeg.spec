@@ -5,16 +5,18 @@ Summary(pl):	Biblioteki do manipulacji plikami w ró¿nych formatach jpeg
 Summary(tr):	jpeg resimlerini iþleme kitaplýðý
 Name:		libjpeg
 Version:	6b
-Release:	16
-Copyright:	distributable
+Release:	17
+License:	distributable
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
 URL:		http://www.ijg.org/
-Patch0:		libjpeg-DESTDIR.patch
-Patch1:		libjpeg-arm.patch
-Patch2:		libjpeg-include.patch
+Patch0:		%{name}-DESTDIR.patch
+Patch1:		%{name}-arm.patch
+Patch2:		%{name}-include.patch
+Patch3:		%{name}-c++.patch
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -45,6 +47,7 @@ Summary(fr):	Bibliothèques statiques et en-têtes pour développer avec libjpeg
 Summary(pl):	Pliki nag³ówkowe libjpeg
 Summary(tr):	libjpeg için geliþtirme kitaplýklarý ve baþlýk dosyalarý
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -82,6 +85,7 @@ Summary(de):	Einfachen Clients zur Manipulation von jpeg
 Summary(fr):	Clients simples pour manipuler de telles images
 Summary(pl):	Kilka prostych programów do manipulowania na plikach jpeg
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -107,6 +111,7 @@ Kilka prostych programów do manipulowania na plikach jpeg.
 Summary:	Static libraries for developing programs using libjpeg
 Summary(pl):	Biblioteki statyczne libjpeg
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -122,10 +127,10 @@ Statyczna bibliteka libjpeg.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 cp -f %{_datadir}/libtool/config.sub .
-LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-shared \
 	--enable-static
@@ -142,10 +147,7 @@ install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 
 install jversion.h $RPM_BUILD_ROOT%{_includedir}
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*so.*.*
-
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	{libjpeg,structure}.doc
+gzip -9nf {libjpeg,structure}.doc
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
