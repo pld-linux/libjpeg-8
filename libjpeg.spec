@@ -125,23 +125,23 @@ gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc {libjpeg,structure}.doc.gz
 
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*.h
 
 %files progs
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 
 %files static
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %{_libdir}/lib*.a
 
 %changelog
