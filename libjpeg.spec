@@ -188,6 +188,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 
 %{__make} install install-headers install-lib \
+	libdir=%{_libdir} \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install jversion.h $RPM_BUILD_ROOT%{_includedir}
