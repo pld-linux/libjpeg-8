@@ -1,11 +1,15 @@
 Summary:	Library for handling different jpeg files
 Summary(de):	Library zum Verarbeiten verschiedener jpeg-Dateien
+Summary(es):	Biblioteca para manipulaciСn de diferentes archivos jpegs
 Summary(fr):	BibliothХque pour gИrer diffИrents fichiers jpeg
 Summary(pl):	Biblioteka do manipulacji plikami w formacie jpeg
+Summary(pt_BR):	Biblioteca para manipulaГЦo de diferentes arquivos jpegs
+Summary(ru):	Библиотека для обработки различных jpeg-файлов
 Summary(tr):	jpeg resimlerini iЧleme kitaplЩПЩ
+Summary(uk):	Б╕бл╕отека для обробки р╕зноман╕тних jpeg-файл╕в
 Name:		libjpeg
 Version:	6b
-Release:	19
+Release:	20
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
@@ -27,6 +31,10 @@ Dieses Paket ist eine Library mit Funktionen zur Manipulation von
 jpeg-Bildern, zusammen mit einfachen Clients zur Manipulation von
 jpeg.
 
+%description -l es
+Este paquete contiene una biblioteca de funciones y programas
+sencillos que manipulan imАgenes jpeg.
+
 %description -l fr
 BibliothХque de fonctions qui manipulent des images jpeg, et clients
 simples pour manipuler de telles images.
@@ -34,16 +42,32 @@ simples pour manipuler de telles images.
 %description -l pl
 Ten pakiet zawiera bibliotekЙ funkcji do manipulacji plikami jpeg.
 
+%description -l pt_BR
+Este pacote contИm uma biblioteca de funГУes e programas simples que
+manipulam imagens jpeg.
+
+%description -l ru
+Библиотека функций для обработки jpeg-изображений и простые клиенты
+для такой обработки.
+
 %description -l tr
 Bu paket, jpeg Чekillerini iЧlemek iГin kitaplЩklar ve basit
 istemciler iГerir.
 
+%description -l uk
+Б╕бл╕отека функц╕й для обробки jpeg-зображень та прост╕ кл╕╓нти для
+тако╖ обробки.
+
 %package devel
 Summary:	Headers for developing programs using libjpeg
 Summary(de):	Header und statische Libraries zum Entwickeln von Programmen mit libjpeg
+Summary(es):	Archivos de inclusiСn y bibliotecas para desarrollar programas usando libjpeg
 Summary(fr):	BibliothХques statiques et en-tЙtes pour dИvelopper avec libjpeg
 Summary(pl):	Pliki nagЁСwkowe libjpeg
+Summary(pt_BR):	Arquivos de inclusЦo e bibliotecas para desenvolver programas usando libjpeg
+Summary(ru):	Хедеры и библиотека для разработки программ, использующих libjpeg
 Summary(tr):	libjpeg iГin geliЧtirme kitaplЩklarЩ ve baЧlЩk dosyalarЩ
+Summary(uk):	Хедери та б╕бл╕отека для розробки програм, що використовують libjpeg
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
@@ -61,6 +85,10 @@ Dieses Paket bietet alles, was Sie brauchen, um Programme zur
 Manipulation von jpeg-Grafiken, einschlieъlich Dokumentation, zu
 entwickeln.
 
+%description devel -l es
+Este paquete es todo lo que necesitas para desarrollar programas que
+manipulen imАgenes jpeg, incluso documentaciСn.
+
 %description devel -l fr
 Ce package est tout ce dont vous avez besoin pour dИvelopper des
 programmes manipulant des images jpg, et comprend la documentation.
@@ -69,10 +97,22 @@ programmes manipulant des images jpg, et comprend la documentation.
 Ten pakiet pozwoli Ci na programowanie z wykorzystniem formatu jpeg.
 Zawiera tak©e dokumentacjЙ.
 
+%description devel -l pt_BR
+Este pacote И tudo que vocЙ precisa para desenvolver programas que
+manipulam imagens jpeg, incluindo documentaГЦo.
+
+%description devel -l ru
+В этом пакете содержится все необходимое для разработки программ,
+которые работают с jpeg-изображениями включая документацию.
+
 %description devel -l tr
 Bu paket, jpeg resimlerini iЧleyen programlar geliЧtirmeniz iГin
 gereken baЧlЩk dosyalarЩnЩ, kitaplЩklarЩ ve ilgili yardЩm belgelerini
 iГerir.
+
+%description devel -l uk
+Цей пакет м╕стить все необх╕дне для розробки програм, котр╕ працюють з
+jpeg-зображеннями, включаючи документац╕ю.
 
 %package progs
 Summary:	Simple clients for manipulating jpeg images
@@ -102,6 +142,9 @@ Kilka prostych programСw do manipulowania na plikach jpeg.
 %package static
 Summary:	Static libraries for developing programs using libjpeg
 Summary(pl):	Biblioteki statyczne libjpeg
+Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com libjpeg
+Summary(ru):	Статическая библиотека для программирования с libjpeg
+Summary(uk):	Статична б╕бл╕отека для програмування з libjpeg
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
@@ -110,6 +153,17 @@ Static libraries for developing programs using libjpeg.
 
 %description static -l pl
 Statyczna biblioteka libjpeg.
+
+%description static -l pt_BR
+Bibliotecas estАticas para desenvolvimento com libjpeg.
+
+%description static -l ru
+Этот пакет содержит статические библиотеки, необходимые для написания
+программ, использующих libjpeg.
+
+%description static -l uk
+Цей пакет м╕стить статичн╕ б╕бл╕отеки, необх╕дн╕ для написання
+програм, що використовують libjpeg.
 
 %prep
 %setup  -q -n jpeg-%{version}
