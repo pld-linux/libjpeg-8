@@ -13,7 +13,7 @@ Source:		ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
 Patch0:		libjpeg-DESTDIR.patch
 Patch1:		libjpeg-arm.patch
 BuildRequires:	libtool
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The libjpeg package contains a library of functions for manipulating JPEG
