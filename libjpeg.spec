@@ -137,7 +137,7 @@ LD_PRELOAD=$PWD/.libs/%{name}.so make test
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 
-make DESTDIR=$RPM_BUILD_ROOT \
+%{__make} DESTDIR=$RPM_BUILD_ROOT \
 	install install-headers install-lib
 
 install jversion.h $RPM_BUILD_ROOT%{_includedir}
