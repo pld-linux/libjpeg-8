@@ -130,7 +130,7 @@ LDFLAGS="-s"; export LDFLAGS
 	--enable-shared \
 	--enable-static
 
-make
+%{__make}
 LD_PRELOAD=$PWD/.libs/%{name}.so make test
 
 %install
