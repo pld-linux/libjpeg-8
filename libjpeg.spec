@@ -5,7 +5,7 @@ Summary(pl):	Biblioteka do manipulacji plikami w formacie jpeg
 Summary(tr):	jpeg resimlerini iþleme kitaplýðý
 Name:		libjpeg
 Version:	6b
-Release:	18
+Release:	19
 License:	distributable
 Group:		Libraries
 Group(de):	Libraries
@@ -13,6 +13,7 @@ Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
+Source1:	%{name}-non-english-man-pages.tar.bz2
 URL:		http://www.ijg.org/
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-arm.patch
@@ -155,6 +156,8 @@ grep -v 'HAVE_STD..._H' jconfig.h > jconfig.h.new
 mv -f jconfig.h.new jconfig.h
 )
 
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+
 gzip -9nf {libjpeg,structure}.doc
 
 %post   -p /sbin/ldconfig
@@ -179,6 +182,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
+%lang(fi) %{_mandir}/fi/man1/*
+%lang(pl) %{_mandir}/pl/man1/*
 
 %files static
 %defattr(644,root,root,755)
