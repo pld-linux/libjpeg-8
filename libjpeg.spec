@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do manipulacji plikami w ró¿nych formatach jpeg
 Summary(tr):	jpeg resimlerini iþleme kitaplýðý
 Name:		libjpeg
 Version:	6b
-Release:	14
+Release:	15
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -115,7 +115,6 @@ Statyczna bibliteka libjpeg.
 %build
 cp -f %{_datadir}/libtool/config.sub .
 LDFLAGS="-s"; export LDFLAGS
-CFLAGS="-DD_MAX_BLOCKS_IN_MCU=64"; export CFLAGS
 %configure \
 	--enable-shared \
 	--enable-static
