@@ -13,7 +13,9 @@ Release:	22
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
+# Source0-md5: dbd5f3b47ed13132f04c685d608a7547
 Source1:	%{name}-non-english-man-pages.tar.bz2
+# Source1-md5: d6342c015a489de275ada637a77dc2b0
 URL:		http://www.ijg.org/
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-arm.patch
