@@ -115,8 +115,8 @@ make install-lib
 
 strip $RPM_BUILD_ROOT/usr/{lib/lib*so.*.*,/bin/*}
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/man1/*
-gzip -9nf {libjpeg,structure}.doc
+gzip -9nf $RPM_BUILD_ROOT/usr/man/man1/* \
+	{libjpeg,structure}.doc
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -125,6 +125,7 @@ gzip -9nf {libjpeg,structure}.doc
 rm -rf $RPM_BUILD_ROOT
 
 %files
+%defattr(644, root, root, 755)
 %attr(755,root,root) /usr/lib/lib*.so.*.*
 
 %files devel
@@ -135,11 +136,13 @@ rm -rf $RPM_BUILD_ROOT
 /usr/include/*.h
 
 %files progs
+%defattr(644, root, root, 755)
 %attr(755,root,root) /usr/bin/*
-%attr(644,root,root) /usr/man/man1/*
+/usr/man/man1/*
 
 %files static
-%attr(644,root,root) /usr/lib/lib*.a
+%defattr(644, root, root, 755)
+/usr/lib/lib*.a
 
 %changelog
 * Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
