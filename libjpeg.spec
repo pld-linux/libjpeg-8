@@ -1,15 +1,16 @@
-Summary:     Library for handling different jpeg files.
-Summary(de): Library zum Verarbeiten verschiedener jpeg-Dateien
-Summary(fr): Bibliothèque pour gérer différents fichiers jpeg
-Summary(pl): Biblioteka do manipulacji ró¿nymi plikami w formacie jpeg
-Summary(tr): jpeg resimlerini iþleme kitaplýðý
-Name:        libjpeg
-Version:     6b
-Release:     8
-Copyright:   distributable
-Group:       Libraries
-Source0:     ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
-Buildroot:   /tmp/%{name}-%{version}-root
+Summary:	Library for handling different jpeg files.
+Summary(de):	Library zum Verarbeiten verschiedener jpeg-Dateien
+Summary(fr):	Bibliothèque pour gérer différents fichiers jpeg
+Summary(pl):	Biblioteki do manipulacji plikami w ró¿nych formatach jpeg
+Summary(tr):	jpeg resimlerini iþleme kitaplýðý
+Name:		libjpeg
+Version:	6b
+Release:	9
+Copyright:	distributable
+Group:		Libraries
+Group(pl):	Biblioteki
+Source:		ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
+Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
 This package is a library of functions that manipulate jpeg images
@@ -28,11 +29,14 @@ Ten pakiet zawiera bibliotekê funkcji do manipulacji plikami jpeg.
 Bu paket, jpeg þekillerini iþlemek için kitaplýklar ve basit istemciler içerir.
 
 %package devel
-Summary:     header files for developing programs using libjpeg
-Summary(de): Header zum Entwickeln von Programmen mit libjpeg
-Summary(pl): Pliki nag³ówkowe do biblioteki jpeg
-Group:       Development/Libraries
-Requires:    %{name} = %{version}
+Summary:	headers for developing programs using libjpeg
+Summary(de):	Header und statische Libraries zum Entwickeln von Programmen mit libjpeg
+Summary(fr):	Bibliothèques statiques et en-têtes pour développer avec libjpeg
+Summary(tr):	libjpeg için geliþtirme kitaplýklarý ve baþlýk dosyalarý
+Summary(pl):	Pliki nag³ówkowe jpeg
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
 
 %description devel
 This package is all you need to develop programs that manipulate jpeg
@@ -55,12 +59,13 @@ Bu paket, jpeg resimlerini iþleyen programlar geliþtirmeniz için gereken
 baþlýk dosyalarýný, kitaplýklarý ve ilgili yardým belgelerini içerir.
 
 %package progs
-Summary:     Simple clients for manipulating jpeg images
-Summary(de): Einfachen Clients zur Manipulation von jpeg
-Summary(fr): Clients simples pour manipuler de telles images
-Summary(pl): Kilka prostych programów do manipulowania na plikach jpeg
-Group:       Development/Libraries
-Requires:    %{name} = %{version}
+Summary:	Simple clients for manipulating jpeg images
+Summary(de):	Einfachen Clients zur Manipulation von jpeg
+Summary(fr):	Clients simples pour manipuler de telles images
+Summary(pl):	Kilka prostych programów do manipulowania na plikach jpeg
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
 
 %description progs
 Simple clients for manipulating jpeg images.
@@ -75,24 +80,28 @@ Clients simples pour manipuler de telles images.
 Kilka prostych programów do manipulowania na plikach jpeg.
 
 %package static
-Summary:     Static jpeg library
-Summary(pl): Statyczna bibliteka jpeg
-Group:       Development/Libraries
-Requires:    %{name}-devel = %{version}
+Summary:	Static libraries for developing programs using libjpeg
+Summary(pl):	Biblioteki statyczne jpeg
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
 
 %description static
-Static jpeg library
+Static libraries for developing programs using libjpeg
 
-%description static -l pl
+%description -l pl static
 Statyczna bibliteka jpeg.
 
 %prep
 %setup -q -n jpeg-%{version}
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure \
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+./configure \
 	--prefix=$RPM_BUILD_ROOT/usr \
-	--enable-shared --enable-static
+	--enable-shared \
+	--enable-static
+
 make
 LD_LIBRARY_PATH=$PWD make test
 
@@ -105,6 +114,9 @@ make install-lib
 
 strip $RPM_BUILD_ROOT/usr/{lib/lib*so.*.*,/bin/*}
 
+gzip -9nf $RPM_BUILD_ROOT/usr/man/man1/*
+bzip2 -9 {libjpeg,structure}.doc
+
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -112,39 +124,43 @@ strip $RPM_BUILD_ROOT/usr/{lib/lib*so.*.*,/bin/*}
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(755, root, root) /usr/lib/lib*.so.*.*
+%attr(755,root,root) /usr/lib/lib*.so.*.*
 
 %files devel
 %defattr(644, root, root, 755)
-%doc libjpeg.doc structure.doc
-/usr/lib/*.so
+%doc {libjpeg,structure}.doc.bz2
+
+%attr(755,root,root) /usr/lib/lib*.so
 /usr/include/*.h
 
 %files progs
-%attr(755, root, root) /usr/bin/*
-%attr(644, root,  man) /usr/man/man1/*
+%attr(755,root,root) /usr/bin/*
+%attr(644,root,root) /usr/man/man1/*
 
 %files static
-%attr(644, root, root) /usr/lib/*.a
+%attr(644,root,root) /usr/lib/lib*.a
 
 %changelog
-* Sat Aug  8 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [6b-8]
-- modified pl translation,
-- added -q %setup parameter and added using %%{version} in -n,
-- Buildroot changed to /tmp/%%{name}-%%{version}-root,
-- added static and progs subpackages,
-- some modification in %files,
-- removed *.la files from devel,
+* Wed Feb 24 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [6b-9]
 - added using %%{version} macro in Source,
 - added stripping shared libs and binaries,
-- add libjpeg.doc structure.doc to devel %doc,
-- changed Requires to "Requires: %%{name}-%%{version}".
+- libjpeg.doc structure.doc to devel %doc,
+- added bzipping2 %doc,
+- removed man group from man pages,
+- removed using LIBVER macro.
 
 * Thu Jul 16 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-  [6b-7]
-- added polish desciptions,
-- added %defattr support.
+  [6b-6d]
+- translation modified for pl,
+- added %defattr support,
+- moved %changelog at the end of spec,
+- changed permissions of ELF bibnaries to 711,
+- changed permissions of *.so libs to 755,
+- added static subpackages.
+
+* Tue Jul 07 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+- build against glibc-2.1.
 
 * Tue Jun 09 1998 Prospector System <bugs@redhat.com>
 - translations modified for de
@@ -154,6 +170,7 @@ rm -rf $RPM_BUILD_ROOT
 - remove patch that set (improper) soname - libjpeg now does it itself
 
 * Thu May 07 1998 Prospector System <bugs@redhat.com>
+
 - translations modified for de, fr, tr
 
 * Fri May 01 1998 Cristian Gafton <gafton@redhat.com>
