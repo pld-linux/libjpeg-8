@@ -133,7 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc {libjpeg,structure}.doc.gz
 
 %attr(755,root,root) %{_libdir}/lib*.so
-/usr/include/*.h
+%{_includedir}/*.h
 
 %files progs
 %defattr(644, root, root, 755)
