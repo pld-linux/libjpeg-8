@@ -9,7 +9,7 @@ Summary(tr):	jpeg resimlerini iЧleme kitaplЩПЩ
 Summary(uk):	Б╕бл╕отека для обробки р╕зноман╕тних jpeg-файл╕в
 Name:		libjpeg
 Version:	6b
-Release:	20
+Release:	22
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
@@ -185,8 +185,8 @@ LD_PRELOAD=$PWD/.libs/%{name}.so make test
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT \
-	install install-headers install-lib
+%{__make} install install-headers install-lib \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install jversion.h $RPM_BUILD_ROOT%{_includedir}
 
@@ -198,8 +198,6 @@ mv -f jconfig.h.new jconfig.h
 )
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
-
-gzip -9nf {libjpeg,structure}.doc
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -213,7 +211,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc {libjpeg,structure}.doc.gz
+%doc {libjpeg,structure}.doc
 
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
