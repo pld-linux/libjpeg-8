@@ -180,7 +180,8 @@ cp -f %{_datadir}/libtool/config.sub .
 	--enable-shared \
 	--enable-static
 
-%{__make}
+%{__make} \
+	libdir=%{_libdir} 
 LD_PRELOAD=$PWD/.libs/%{name}.so make test
 
 %install
