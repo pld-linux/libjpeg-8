@@ -13,8 +13,8 @@
   * installation of the JPEG library is set up.  jconfig.h can be
 @@ -1091,6 +1095,10 @@
  #ifdef JPEG_INTERNALS
- #include "jpegint.h"		/* fetch private declarations */
- #include "jerror.h"		/* fetch error codes too */
+ #include <jpegint.h>		/* fetch private declarations */
+ #include <jerror.h>		/* fetch error codes too */
 +#endif
 +
 +#ifdef __cplusplus

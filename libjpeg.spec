@@ -1,14 +1,15 @@
 Summary:	Library for handling different jpeg files
 Summary(de):	Library zum Verarbeiten verschiedener jpeg-Dateien
 Summary(fr):	Bibliothèque pour gérer différents fichiers jpeg
-Summary(pl):	Biblioteki do manipulacji plikami w ró¿nych formatach jpeg
+Summary(pl):	Biblioteka do manipulacji plikami w formacie jpeg
 Summary(tr):	jpeg resimlerini iþleme kitaplýðý
 Name:		libjpeg
 Version:	6b
-Release:	17
+Release:	18
 License:	distributable
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
@@ -41,7 +42,7 @@ Bu paket, jpeg þekillerini iþlemek için kitaplýklar ve basit
 istemciler içerir.
 
 %package devel
-Summary:	headers for developing programs using libjpeg
+Summary:	Headers for developing programs using libjpeg
 Summary(de):	Header und statische Libraries zum Entwickeln von Programmen mit libjpeg
 Summary(fr):	Bibliothèques statiques et en-têtes pour développer avec libjpeg
 Summary(pl):	Pliki nag³ówkowe libjpeg
@@ -120,7 +121,7 @@ Requires:	%{name}-devel = %{version}
 Static libraries for developing programs using libjpeg.
 
 %description -l pl static
-Statyczna bibliteka libjpeg.
+Statyczna biblioteka libjpeg.
 
 %prep
 %setup  -q -n jpeg-%{version}
@@ -146,6 +147,13 @@ install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 	install install-headers install-lib
 
 install jversion.h $RPM_BUILD_ROOT%{_includedir}
+
+# remove HAVE_STD{DEF,LIB}_H
+# (not necessary but may generate warnings confusing autoconf)
+(cd $RPM_BUILD_ROOT%{_includedir}
+grep -v 'HAVE_STD..._H' jconfig.h > jconfig.h.new
+mv -f jconfig.h.new jconfig.h
+)
 
 gzip -9nf {libjpeg,structure}.doc
 
