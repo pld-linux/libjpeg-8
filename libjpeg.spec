@@ -96,7 +96,7 @@ Ce package est tout ce dont vous avez besoin pour développer des
 programmes manipulant des images jpg, et comprend la documentation.
 
 %description devel -l pl
-Ten pakiet pozwoli Ci na programowanie z wykorzystniem formatu jpeg.
+Ten pakiet pozwoli Ci na programowanie z wykorzystaniem formatu jpeg.
 Zawiera tak¿e dokumentacjê.
 
 %description devel -l pt_BR
