@@ -5,11 +5,12 @@ Summary(pl):	Biblioteki do manipulacji plikami w ró¿nych formatach jpeg
 Summary(tr):	jpeg resimlerini iþleme kitaplýðý
 Name:		libjpeg
 Version:	6b
-Release:	13
+Release:	14
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
+URL:		http://www.ijg.org/
 Patch0:		libjpeg-DESTDIR.patch
 Patch1:		libjpeg-arm.patch
 BuildRequires:	libtool
@@ -112,14 +113,15 @@ Statyczna bibliteka libjpeg.
 %patch1 -p1
 
 %build
-cp -f /usr/share/libtool/config.sub .
+cp -f %{_datadir}/libtool/config.sub .
 LDFLAGS="-s"; export LDFLAGS
+CFLAGS="-DD_MAX_BLOCKS_IN_MCU=64"; export CFLAGS
 %configure \
 	--enable-shared \
 	--enable-static
 
 make
-LD_LIBRARY_PATH=$PWD make test
+LD_PRELOAD=$PWD/.libs/%{name}.so make test
 
 %install
 rm -rf $RPM_BUILD_ROOT
