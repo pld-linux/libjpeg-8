@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do manipulacji plikami w ró¿nych formatach jpeg
 Summary(tr):	jpeg resimlerini iþleme kitaplýðý
 Name:		libjpeg
 Version:	6b
-Release:	10
+Release:	11
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -98,7 +98,7 @@ Statyczna bibliteka libjpeg.
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure %{_target} \
-	--prefix=$RPM_BUILD_ROOT/usr \
+	--prefix=$RPM_BUILD_ROOT%{_prefix} \
 	--enable-shared \
 	--enable-static
 
@@ -113,7 +113,7 @@ make install
 make install-headers
 make install-lib
 
-strip $RPM_BUILD_ROOT/usr/{lib/lib*so.*.*,/bin/*}
+strip $RPM_BUILD_ROOT/{%{_libdir}/lib*so.*.*,%{_bindir}/*}
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	{libjpeg,structure}.doc
@@ -145,48 +145,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.a
 
 %changelog
-* Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
-  [6b-10]
-- gzipping documentation (instead bzipping)
-- fixed pl translation
-
-* Wed Feb 24 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [6b-9]
-- added using %%{version} macro in Source,
-- added stripping shared libs and binaries,
-- libjpeg.doc structure.doc to devel %doc,
-- added bzipping2 %doc,
-- removed man group from man pages,
-- removed using LIBVER macro.
-
-* Thu Jul 16 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-  [6b-6d]
-- translation modified for pl,
-- added %defattr support,
-- moved %changelog at the end of spec,
-- changed permissions of ELF bibnaries to 711,
-- changed permissions of *.so libs to 755,
-- added static subpackages.
-
-* Tue Jul 07 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-- build against glibc-2.1.
-
-* Tue Jun 09 1998 Prospector System <bugs@redhat.com>
-- translations modified for de
-
-* Thu Jun 04 1998 Marc Ewing <marc@redhat.com>
-- up to release 4
-- remove patch that set (improper) soname - libjpeg now does it itself
-
-* Thu May 07 1998 Prospector System <bugs@redhat.com>
-
-- translations modified for de, fr, tr
-
-* Fri May 01 1998 Cristian Gafton <gafton@redhat.com>
-- fixed build on manhattan
-
-* Wed Apr 08 1998 Cristian Gafton <gafton@redhat.com>
-- upgraded to version 6b
-
-* Wed Oct 08 1997 Donnie Barnes <djb@redhat.com>
-- new package to remove jpeg stuff from libgr and put in it's own package
+* Thu May 20 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [6b-11]
+- spec based on RH spec,
+- pl translation by Wojtek ¦lusarczyk <wojtek@shadow.eu.org>,
+- spec rewritten by Wojtek ¦lusarczyk <wojtek@shadow.eu.org> and me.
