@@ -10,6 +10,7 @@ Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
+Patch:		libjpeg-DESTDIR.patch
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -94,11 +95,11 @@ Statyczna bibliteka libjpeg.
 
 %prep
 %setup -q -n jpeg-%{version}
+%patch -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=$RPM_BUILD_ROOT%{_prefix} \
+LDFLAGS="-s"; export LDFLAGS
+%configure \
 	--enable-shared \
 	--enable-static
 
@@ -109,9 +110,8 @@ LD_LIBRARY_PATH=$PWD make test
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 
-make install mandir=$RPM_BUILD_ROOT%{_mandir}/man1
-make install-headers
-make install-lib
+make DESTDIR=$RPM_BUILD_ROOT \
+	install install-headers install-lib
 
 strip $RPM_BUILD_ROOT/{%{_libdir}/lib*so.*.*,%{_bindir}/*}
 
