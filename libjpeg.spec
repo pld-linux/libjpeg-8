@@ -143,10 +143,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-
-%changelog
-* Thu May 20 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [6b-11]
-- spec based on RH spec,
-- pl translation by Wojtek ¦lusarczyk <wojtek@shadow.eu.org>,
-- spec rewritten by Wojtek ¦lusarczyk <wojtek@shadow.eu.org> and me.
