@@ -115,7 +115,7 @@ make install-lib
 
 strip $RPM_BUILD_ROOT/usr/{lib/lib*so.*.*,/bin/*}
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/man1/* \
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	{libjpeg,structure}.doc
 
 %post   -p /sbin/ldconfig
@@ -138,7 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 %files progs
 %defattr(644, root, root, 755)
 %attr(755,root,root) /usr/bin/*
-/usr/man/man1/*
+%{_mandir}/man1/*
 
 %files static
 %defattr(644, root, root, 755)
