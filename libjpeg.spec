@@ -214,7 +214,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc {libjpeg,structure}.doc
 
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_includedir}/*.h
 
 %files progs
