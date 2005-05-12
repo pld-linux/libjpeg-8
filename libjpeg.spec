@@ -9,13 +9,15 @@ Summary(tr):	jpeg resimlerini iЧleme kitaplЩПЩ
 Summary(uk):	Б╕бл╕отека для обробки р╕зноман╕тних jpeg-файл╕в
 Name:		libjpeg
 Version:	6b
-Release:	25
+Release:	26
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
 # Source0-md5:	dbd5f3b47ed13132f04c685d608a7547
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
+Source2:	http://sylvana.net/jpegcrop/croppatch.tar.gz
+# Source2-md5:	45d76e4226232439308e2129b64c4ea1
 URL:		http://www.ijg.org/
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-arm.patch
@@ -174,6 +176,8 @@ Bibliotecas estАticas para desenvolvimento com libjpeg.
 %patch2 -p1
 %patch3 -p1
 
+gzip -dc %{SOURCE2} | tar xf -
+
 %build
 cp -f %{_datadir}/libtool/config.sub .
 %configure \
@@ -187,6 +191,7 @@ LD_PRELOAD=$PWD/.libs/%{name}.so make test
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
+
 
 %{__make} install install-headers install-lib \
 	libdir=%{_libdir} \
