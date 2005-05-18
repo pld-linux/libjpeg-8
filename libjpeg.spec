@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	crop	# "apply" crop pseudo-patch
+#
 Summary:	Library for handling different jpeg files
 Summary(de):	Library zum Verarbeiten verschiedener jpeg-Dateien
 Summary(es):	Biblioteca para manipulación de diferentes archivos jpegs
@@ -176,7 +180,9 @@ Bibliotecas estáticas para desenvolvimento com libjpeg.
 %patch2 -p1
 %patch3 -p1
 
+%if %{with crop}
 gzip -dc %{SOURCE2} | tar xf -
+%endif
 
 %build
 cp -f %{_datadir}/libtool/config.sub .
