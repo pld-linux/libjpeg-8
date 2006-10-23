@@ -1,3 +1,5 @@
+# TODO
+# - ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/delegates/ljpeg-6b.tar.gz
 #
 # Conditional build:
 %bcond_with	crop	# "apply" crop pseudo-patch
@@ -27,6 +29,7 @@ Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-arm.patch
 Patch2:		%{name}-include.patch
 Patch3:		%{name}-c++.patch
+Patch4:		%{name}-libtool.patch
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -179,19 +182,22 @@ Bibliotecas estáticas para desenvolvimento com libjpeg.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %if %{with crop}
 gzip -dc %{SOURCE2} | tar xf -
 %endif
 
-%build
 cp -f %{_datadir}/libtool/config.sub .
+
+%build
 %configure \
 	--enable-shared \
 	--enable-static
 
 %{__make} \
-	libdir=%{_libdir} 
+	libdir=%{_libdir}
+
 LD_PRELOAD=$PWD/.libs/%{name}.so make test
 
 %install
