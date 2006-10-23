@@ -1,0 +1,44 @@
+--- jpeg-6b/configure	1998-03-21 21:08:57.000000000 +0200
++++ jpeg-6b.libtool/configure	2006-10-23 17:03:19.529255759 +0300
+@@ -1529,10 +1529,10 @@
+ 
+ if test "x$LTSHARED" != xno  -o  "x$LTSTATIC" != xno; then
+   USELIBTOOL="yes"
+-  LIBTOOL="./libtool"
++  LIBTOOL="libtool"
+   O="lo"
+   A="la"
+-  LN='$(LIBTOOL) --mode=link $(CC)'
++  LN='$(LIBTOOL) --tag=CC --mode=link $(CC)'
+   INSTALL_LIB='$(LIBTOOL) --mode=install ${INSTALL}'
+   INSTALL_PROGRAM="\$(LIBTOOL) --mode=install $INSTALL_PROGRAM"
+ else
+--- jpeg-6b/makefile.cfg	2006-10-23 17:04:59.081491199 +0300
++++ jpeg-6b.libtool/makefile.cfg	2006-10-23 17:04:27.360778917 +0300
+@@ -140,7 +140,7 @@
+ 
+ # How to compile with libtool.
+ @COM_LT@.c.lo:
+-@COM_LT@	$(LIBTOOL) --mode=compile $(CC) $(CFLAGS) -c $(srcdir)/$*.c
++@COM_LT@	$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) -c $(srcdir)/$*.c
+ 
+ # How to use ansi2knr, when not using libtool.
+ @COM_A2K@.c.o:
+@@ -151,7 +151,7 @@
+ # How to use ansi2knr AND libtool.
+ @COM_A2K@.c.lo:
+ @COM_A2K@	./ansi2knr $(srcdir)/$*.c knr/$*.c
+-@COM_A2K@	$(LIBTOOL) --mode=compile $(CC) $(CFLAGS) -c knr/$*.c
++@COM_A2K@	$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) -c knr/$*.c
+ @COM_A2K@	$(RM) knr/$*.c
+ 
+ ansi2knr: ansi2knr.c
+@@ -168,7 +168,7 @@
+ 
+ # with libtool:
+ libjpeg.la: @A2K_DEPS@ $(LIBOBJECTS)
+-	$(LIBTOOL) --mode=link $(CC) -o libjpeg.la $(LIBOBJECTS) \
++	$(LIBTOOL) --tag=CC --mode=link $(CC) -o libjpeg.la $(LIBOBJECTS) \
+ 		-rpath $(libdir) -version-info $(JPEG_LIB_VERSION)
+ 
+ # sample programs:
