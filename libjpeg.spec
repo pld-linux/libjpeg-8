@@ -1,5 +1,7 @@
 # TODO
 # - ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/delegates/ljpeg-6b.tar.gz
+# NOTE: it changes ABI! either make it work without ABI breakage, or build
+#       second libjpeg (with lossless support) with different name/soname
 #
 # Conditional build:
 %bcond_with	crop	# "apply" crop pseudo-patch
@@ -80,7 +82,7 @@ Summary(ru):	Хедеры и библиотека для разработки программ, использующих libjpeg
 Summary(tr):	libjpeg iГin geliЧtirme kitaplЩklarЩ ve baЧlЩk dosyalarЩ
 Summary(uk):	Хедери та б╕бл╕отека для розробки програм, що використовують libjpeg
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 The libjpeg-devel package includes the header files and static
@@ -131,7 +133,7 @@ Summary(de):	Einfachen Clients zur Manipulation von jpeg
 Summary(fr):	Clients simples pour manipuler de telles images
 Summary(pl):	Kilka prostych programСw do manipulowania na plikach jpeg
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description progs
 Simple clients for manipulating jpeg images. Libjpeg client programs
@@ -157,7 +159,7 @@ Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com libjpeg
 Summary(ru):	Статическая библиотека для программирования с libjpeg
 Summary(uk):	Статична б╕бл╕отека для програмування з libjpeg
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libraries for developing programs using libjpeg.
