@@ -7,14 +7,14 @@
 %bcond_with	crop	# "apply" crop pseudo-patch
 #
 Summary:	Library for handling different jpeg files
-Summary(de):	Library zum Verarbeiten verschiedener jpeg-Dateien
-Summary(es):	Biblioteca para manipulaciСn de diferentes archivos jpegs
-Summary(fr):	BibliothХque pour gИrer diffИrents fichiers jpeg
-Summary(pl):	Biblioteka do manipulacji plikami w formacie jpeg
-Summary(pt_BR):	Biblioteca para manipulaГЦo de diferentes arquivos jpegs
-Summary(ru):	Библиотека для обработки различных jpeg-файлов
-Summary(tr):	jpeg resimlerini iЧleme kitaplЩПЩ
-Summary(uk):	Б╕бл╕отека для обробки р╕зноман╕тних jpeg-файл╕в
+Summary(de.UTF-8):   Library zum Verarbeiten verschiedener jpeg-Dateien
+Summary(es.UTF-8):   Biblioteca para manipulaciцЁn de diferentes archivos jpegs
+Summary(fr.UTF-8):   Bibliothц╗que pour gц╘rer diffц╘rents fichiers jpeg
+Summary(pl.UTF-8):   Biblioteka do manipulacji plikami w formacie jpeg
+Summary(pt_BR.UTF-8):   Biblioteca para manipulaц╖цёo de diferentes arquivos jpegs
+Summary(ru.UTF-8):   п▒п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╢п╩я▐ п╬п╠я─п╟п╠п╬я┌п╨п╦ я─п╟п╥п╩п╦я┤п╫я▀я┘ jpeg-я└п╟п╧п╩п╬п╡
+Summary(tr.UTF-8):   jpeg resimlerini iе÷leme kitaplд╠д÷д╠
+Summary(uk.UTF-8):   п▒я√п╠п╩я√п╬я┌п╣п╨п╟ п╢п╩я▐ п╬п╠я─п╬п╠п╨п╦ я─я√п╥п╫п╬п╪п╟п╫я√я┌п╫п╦я┘ jpeg-я└п╟п╧п╩я√п╡
 Name:		libjpeg
 Version:	6b
 Release:	27
@@ -39,48 +39,48 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 The libjpeg package contains a library of functions for manipulating
 JPEG images.
 
-%description -l de
+%description -l de.UTF-8
 Dieses Paket ist eine Library mit Funktionen zur Manipulation von
 jpeg-Bildern, zusammen mit einfachen Clients zur Manipulation von
 jpeg.
 
-%description -l es
+%description -l es.UTF-8
 Este paquete contiene una biblioteca de funciones y programas
-sencillos que manipulan imАgenes jpeg.
+sencillos que manipulan imц║genes jpeg.
 
-%description -l fr
-BibliothХque de fonctions qui manipulent des images jpeg, et clients
+%description -l fr.UTF-8
+Bibliothц╗que de fonctions qui manipulent des images jpeg, et clients
 simples pour manipuler de telles images.
 
-%description -l pl
-Ten pakiet zawiera bibliotekЙ funkcji do manipulacji plikami jpeg.
+%description -l pl.UTF-8
+Ten pakiet zawiera bibliotekд≥ funkcji do manipulacji plikami jpeg.
 
-%description -l pt_BR
-Este pacote contИm uma biblioteca de funГУes e programas simples que
+%description -l pt_BR.UTF-8
+Este pacote contц╘m uma biblioteca de funц╖ц╣es e programas simples que
 manipulam imagens jpeg.
 
-%description -l ru
-Библиотека функций для обработки jpeg-изображений и простые клиенты
-для такой обработки.
+%description -l ru.UTF-8
+п▒п╦п╠п╩п╦п╬я┌п╣п╨п╟ я└я┐п╫п╨я├п╦п╧ п╢п╩я▐ п╬п╠я─п╟п╠п╬я┌п╨п╦ jpeg-п╦п╥п╬п╠я─п╟п╤п╣п╫п╦п╧ п╦ п©я─п╬я│я┌я▀п╣ п╨п╩п╦п╣п╫я┌я▀
+п╢п╩я▐ я┌п╟п╨п╬п╧ п╬п╠я─п╟п╠п╬я┌п╨п╦.
 
-%description -l tr
-Bu paket, jpeg Чekillerini iЧlemek iГin kitaplЩklar ve basit
-istemciler iГerir.
+%description -l tr.UTF-8
+Bu paket, jpeg е÷ekillerini iе÷lemek iц╖in kitaplд╠klar ve basit
+istemciler iц╖erir.
 
-%description -l uk
-Б╕бл╕отека функц╕й для обробки jpeg-зображень та прост╕ кл╕╓нти для
-тако╖ обробки.
+%description -l uk.UTF-8
+п▒я√п╠п╩я√п╬я┌п╣п╨п╟ я└я┐п╫п╨я├я√п╧ п╢п╩я▐ п╬п╠я─п╬п╠п╨п╦ jpeg-п╥п╬п╠я─п╟п╤п╣п╫я▄ я┌п╟ п©я─п╬я│я┌я√ п╨п╩я√я■п╫я┌п╦ п╢п╩я▐
+я┌п╟п╨п╬я≈ п╬п╠я─п╬п╠п╨п╦.
 
 %package devel
 Summary:	Headers for developing programs using libjpeg
-Summary(de):	Header und statische Libraries zum Entwickeln von Programmen mit libjpeg
-Summary(es):	Archivos de inclusiСn y bibliotecas para desarrollar programas usando libjpeg
-Summary(fr):	BibliothХques statiques et en-tЙtes pour dИvelopper avec libjpeg
-Summary(pl):	Pliki nagЁСwkowe libjpeg
-Summary(pt_BR):	Arquivos de inclusЦo e bibliotecas para desenvolver programas usando libjpeg
-Summary(ru):	Хедеры и библиотека для разработки программ, использующих libjpeg
-Summary(tr):	libjpeg iГin geliЧtirme kitaplЩklarЩ ve baЧlЩk dosyalarЩ
-Summary(uk):	Хедери та б╕бл╕отека для розробки програм, що використовують libjpeg
+Summary(de.UTF-8):   Header und statische Libraries zum Entwickeln von Programmen mit libjpeg
+Summary(es.UTF-8):   Archivos de inclusiцЁn y bibliotecas para desarrollar programas usando libjpeg
+Summary(fr.UTF-8):   Bibliothц╗ques statiques et en-tц╙tes pour dц╘velopper avec libjpeg
+Summary(pl.UTF-8):   Pliki nagе┌цЁwkowe libjpeg
+Summary(pt_BR.UTF-8):   Arquivos de inclusцёo e bibliotecas para desenvolver programas usando libjpeg
+Summary(ru.UTF-8):   п╔п╣п╢п╣я─я▀ п╦ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪, п╦я│п©п╬п╩я▄п╥я┐я▌я┴п╦я┘ libjpeg
+Summary(tr.UTF-8):   libjpeg iц╖in geliе÷tirme kitaplд╠klarд╠ ve baе÷lд╠k dosyalarд╠
+Summary(uk.UTF-8):   п╔п╣п╢п╣я─п╦ я┌п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╟ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪, я┴п╬ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я▌я┌я▄ libjpeg
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -93,45 +93,45 @@ If you are going to develop programs which will manipulate JPEG
 images, you should install libjpeg-devel. You'll also need to have the
 libjpeg package installed.
 
-%description devel -l de
+%description devel -l de.UTF-8
 Dieses Paket bietet alles, was Sie brauchen, um Programme zur
-Manipulation von jpeg-Grafiken, einschlieъlich Dokumentation, zu
+Manipulation von jpeg-Grafiken, einschlieц÷lich Dokumentation, zu
 entwickeln.
 
-%description devel -l es
+%description devel -l es.UTF-8
 Este paquete es todo lo que necesitas para desarrollar programas que
-manipulen imАgenes jpeg, incluso documentaciСn.
+manipulen imц║genes jpeg, incluso documentaciцЁn.
 
-%description devel -l fr
-Ce package est tout ce dont vous avez besoin pour dИvelopper des
+%description devel -l fr.UTF-8
+Ce package est tout ce dont vous avez besoin pour dц╘velopper des
 programmes manipulant des images jpg, et comprend la documentation.
 
-%description devel -l pl
+%description devel -l pl.UTF-8
 Ten pakiet pozwoli Ci na programowanie z wykorzystaniem formatu jpeg.
-Zawiera tak©e dokumentacjЙ.
+Zawiera takе╪e dokumentacjд≥.
 
-%description devel -l pt_BR
-Este pacote И tudo que vocЙ precisa para desenvolver programas que
-manipulam imagens jpeg, incluindo documentaГЦo.
+%description devel -l pt_BR.UTF-8
+Este pacote ц╘ tudo que vocц╙ precisa para desenvolver programas que
+manipulam imagens jpeg, incluindo documentaц╖цёo.
 
-%description devel -l ru
-В этом пакете содержится все необходимое для разработки программ,
-которые работают с jpeg-изображениями включая документацию.
+%description devel -l ru.UTF-8
+п▓ я█я┌п╬п╪ п©п╟п╨п╣я┌п╣ я│п╬п╢п╣я─п╤п╦я┌я│я▐ п╡я│п╣ п╫п╣п╬п╠я┘п╬п╢п╦п╪п╬п╣ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪,
+п╨п╬я┌п╬я─я▀п╣ я─п╟п╠п╬я┌п╟я▌я┌ я│ jpeg-п╦п╥п╬п╠я─п╟п╤п╣п╫п╦я▐п╪п╦ п╡п╨п╩я▌я┤п╟я▐ п╢п╬п╨я┐п╪п╣п╫я┌п╟я├п╦я▌.
 
-%description devel -l tr
-Bu paket, jpeg resimlerini iЧleyen programlar geliЧtirmeniz iГin
-gereken baЧlЩk dosyalarЩnЩ, kitaplЩklarЩ ve ilgili yardЩm belgelerini
-iГerir.
+%description devel -l tr.UTF-8
+Bu paket, jpeg resimlerini iе÷leyen programlar geliе÷tirmeniz iц╖in
+gereken baе÷lд╠k dosyalarд╠nд╠, kitaplд╠klarд╠ ve ilgili yardд╠m belgelerini
+iц╖erir.
 
-%description devel -l uk
-Цей пакет м╕стить все необх╕дне для розробки програм, котр╕ працюють з
-jpeg-зображеннями, включаючи документац╕ю.
+%description devel -l uk.UTF-8
+п╕п╣п╧ п©п╟п╨п╣я┌ п╪я√я│я┌п╦я┌я▄ п╡я│п╣ п╫п╣п╬п╠я┘я√п╢п╫п╣ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪, п╨п╬я┌я─я√ п©я─п╟я├я▌я▌я┌я▄ п╥
+jpeg-п╥п╬п╠я─п╟п╤п╣п╫п╫я▐п╪п╦, п╡п╨п╩я▌я┤п╟я▌я┤п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟я├я√я▌.
 
 %package progs
 Summary:	Simple clients for manipulating jpeg images
-Summary(de):	Einfachen Clients zur Manipulation von jpeg
-Summary(fr):	Clients simples pour manipuler de telles images
-Summary(pl):	Kilka prostych programСw do manipulowania na plikach jpeg
+Summary(de.UTF-8):   Einfachen Clients zur Manipulation von jpeg
+Summary(fr.UTF-8):   Clients simples pour manipuler de telles images
+Summary(pl.UTF-8):   Kilka prostych programцЁw do manipulowania na plikach jpeg
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -143,40 +143,40 @@ perform various useful transformations on JPEG files. Rdjpgcom
 displays any text comments included in a JPEG file. Wrjpgcom inserts
 text comments into a JPEG file.
 
-%description progs -l de
+%description progs -l de.UTF-8
 Einfachen Clients zur Manipulation von jpeg.
 
-%description progs -l fr
+%description progs -l fr.UTF-8
 Clients simples pour manipuler de telles images.
 
-%description progs -l pl
-Kilka prostych programСw do manipulowania na plikach jpeg.
+%description progs -l pl.UTF-8
+Kilka prostych programцЁw do manipulowania na plikach jpeg.
 
 %package static
 Summary:	Static libraries for developing programs using libjpeg
-Summary(pl):	Biblioteki statyczne libjpeg
-Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com libjpeg
-Summary(ru):	Статическая библиотека для программирования с libjpeg
-Summary(uk):	Статична б╕бл╕отека для програмування з libjpeg
+Summary(pl.UTF-8):   Biblioteki statyczne libjpeg
+Summary(pt_BR.UTF-8):   Bibliotecas estц║ticas para desenvolvimento com libjpeg
+Summary(ru.UTF-8):   п║я┌п╟я┌п╦я┤п╣я│п╨п╟я▐ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╢п╩я▐ п©я─п╬пЁя─п╟п╪п╪п╦я─п╬п╡п╟п╫п╦я▐ я│ libjpeg
+Summary(uk.UTF-8):   п║я┌п╟я┌п╦я┤п╫п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╟ п╢п╩я▐ п©я─п╬пЁя─п╟п╪я┐п╡п╟п╫п╫я▐ п╥ libjpeg
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libraries for developing programs using libjpeg.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libjpeg.
 
-%description static -l pt_BR
-Bibliotecas estАticas para desenvolvimento com libjpeg.
+%description static -l pt_BR.UTF-8
+Bibliotecas estц║ticas para desenvolvimento com libjpeg.
 
-%description static -l ru
-Этот пакет содержит статические библиотеки, необходимые для написания
-программ, использующих libjpeg.
+%description static -l ru.UTF-8
+п╜я┌п╬я┌ п©п╟п╨п╣я┌ я│п╬п╢п╣я─п╤п╦я┌ я│я┌п╟я┌п╦я┤п╣я│п╨п╦п╣ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦, п╫п╣п╬п╠я┘п╬п╢п╦п╪я▀п╣ п╢п╩я▐ п╫п╟п©п╦я│п╟п╫п╦я▐
+п©я─п╬пЁя─п╟п╪п╪, п╦я│п©п╬п╩я▄п╥я┐я▌я┴п╦я┘ libjpeg.
 
-%description static -l uk
-Цей пакет м╕стить статичн╕ б╕бл╕отеки, необх╕дн╕ для написання
-програм, що використовують libjpeg.
+%description static -l uk.UTF-8
+п╕п╣п╧ п©п╟п╨п╣я┌ п╪я√я│я┌п╦я┌я▄ я│я┌п╟я┌п╦я┤п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦, п╫п╣п╬п╠я┘я√п╢п╫я√ п╢п╩я▐ п╫п╟п©п╦я│п╟п╫п╫я▐
+п©я─п╬пЁя─п╟п╪, я┴п╬ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я▌я┌я▄ libjpeg.
 
 %prep
 %setup  -q -n jpeg-%{version}
