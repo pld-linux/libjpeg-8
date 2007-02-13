@@ -7,14 +7,14 @@
 %bcond_with	crop	# "apply" crop pseudo-patch
 #
 Summary:	Library for handling different jpeg files
-Summary(de.UTF-8):   Library zum Verarbeiten verschiedener jpeg-Dateien
-Summary(es.UTF-8):   Biblioteca para manipulación de diferentes archivos jpegs
-Summary(fr.UTF-8):   Bibliothèque pour gérer différents fichiers jpeg
-Summary(pl.UTF-8):   Biblioteka do manipulacji plikami w formacie jpeg
-Summary(pt_BR.UTF-8):   Biblioteca para manipulação de diferentes arquivos jpegs
-Summary(ru.UTF-8):   Библиотека для обработки различных jpeg-файлов
-Summary(tr.UTF-8):   jpeg resimlerini işleme kitaplığı
-Summary(uk.UTF-8):   Бібліотека для обробки різноманітних jpeg-файлів
+Summary(de.UTF-8):	Library zum Verarbeiten verschiedener jpeg-Dateien
+Summary(es.UTF-8):	Biblioteca para manipulación de diferentes archivos jpegs
+Summary(fr.UTF-8):	Bibliothèque pour gérer différents fichiers jpeg
+Summary(pl.UTF-8):	Biblioteka do manipulacji plikami w formacie jpeg
+Summary(pt_BR.UTF-8):	Biblioteca para manipulação de diferentes arquivos jpegs
+Summary(ru.UTF-8):	Библиотека для обработки различных jpeg-файлов
+Summary(tr.UTF-8):	jpeg resimlerini işleme kitaplığı
+Summary(uk.UTF-8):	Бібліотека для обробки різноманітних jpeg-файлів
 Name:		libjpeg
 Version:	6b
 Release:	27
@@ -73,14 +73,14 @@ istemciler içerir.
 
 %package devel
 Summary:	Headers for developing programs using libjpeg
-Summary(de.UTF-8):   Header und statische Libraries zum Entwickeln von Programmen mit libjpeg
-Summary(es.UTF-8):   Archivos de inclusión y bibliotecas para desarrollar programas usando libjpeg
-Summary(fr.UTF-8):   Bibliothèques statiques et en-têtes pour développer avec libjpeg
-Summary(pl.UTF-8):   Pliki nagłówkowe libjpeg
-Summary(pt_BR.UTF-8):   Arquivos de inclusão e bibliotecas para desenvolver programas usando libjpeg
-Summary(ru.UTF-8):   Хедеры и библиотека для разработки программ, использующих libjpeg
-Summary(tr.UTF-8):   libjpeg için geliştirme kitaplıkları ve başlık dosyaları
-Summary(uk.UTF-8):   Хедери та бібліотека для розробки програм, що використовують libjpeg
+Summary(de.UTF-8):	Header und statische Libraries zum Entwickeln von Programmen mit libjpeg
+Summary(es.UTF-8):	Archivos de inclusión y bibliotecas para desarrollar programas usando libjpeg
+Summary(fr.UTF-8):	Bibliothèques statiques et en-têtes pour développer avec libjpeg
+Summary(pl.UTF-8):	Pliki nagłówkowe libjpeg
+Summary(pt_BR.UTF-8):	Arquivos de inclusão e bibliotecas para desenvolver programas usando libjpeg
+Summary(ru.UTF-8):	Хедеры и библиотека для разработки программ, использующих libjpeg
+Summary(tr.UTF-8):	libjpeg için geliştirme kitaplıkları ve başlık dosyaları
+Summary(uk.UTF-8):	Хедери та бібліотека для розробки програм, що використовують libjpeg
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -129,9 +129,9 @@ jpeg-зображеннями, включаючи документацію.
 
 %package progs
 Summary:	Simple clients for manipulating jpeg images
-Summary(de.UTF-8):   Einfachen Clients zur Manipulation von jpeg
-Summary(fr.UTF-8):   Clients simples pour manipuler de telles images
-Summary(pl.UTF-8):   Kilka prostych programów do manipulowania na plikach jpeg
+Summary(de.UTF-8):	Einfachen Clients zur Manipulation von jpeg
+Summary(fr.UTF-8):	Clients simples pour manipuler de telles images
+Summary(pl.UTF-8):	Kilka prostych programów do manipulowania na plikach jpeg
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -154,10 +154,10 @@ Kilka prostych programów do manipulowania na plikach jpeg.
 
 %package static
 Summary:	Static libraries for developing programs using libjpeg
-Summary(pl.UTF-8):   Biblioteki statyczne libjpeg
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento com libjpeg
-Summary(ru.UTF-8):   Статическая библиотека для программирования с libjpeg
-Summary(uk.UTF-8):   Статична бібліотека для програмування з libjpeg
+Summary(pl.UTF-8):	Biblioteki statyczne libjpeg
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com libjpeg
+Summary(ru.UTF-8):	Статическая библиотека для программирования с libjpeg
+Summary(uk.UTF-8):	Статична бібліотека для програмування з libjpeg
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
