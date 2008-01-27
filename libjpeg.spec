@@ -4,7 +4,8 @@
 #       second libjpeg (with lossless support) with different name/soname
 #
 # Conditional build:
-%bcond_with	crop	# "apply" crop pseudo-patch (changes error codes in ABI)
+%bcond_with	arith	# arithmetic coding support (changes error codes in ABI, patent problems somewhere)
+%bcond_with	crop	# "apply" crop pseudo-patch (changes error codes in ABI, conflicts with arith patch)
 #
 Summary:	Library for handling different JPEG files
 Summary(de.UTF-8):	Library zum Verarbeiten verschiedener JPEG-Dateien
@@ -26,12 +27,14 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
 Source2:	http://sylvana.net/jpegcrop/croppatch.tar.gz
 # Source2-md5:	45d76e4226232439308e2129b64c4ea1
-URL:		http://www.ijg.org/
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-arm.patch
 Patch2:		%{name}-include.patch
 Patch3:		%{name}-c++.patch
 Patch4:		%{name}-libtool.patch
+# from http://sylvana.net/jpeg-ari/jpeg-ari-28mar98.tar.gz
+Patch5:		%{name}-arith.patch
+URL:		http://www.ijg.org/
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -182,6 +185,7 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%{?with_arith:%patch5 -p1}
 
 %if %{with crop}
 mkdir croppatch
@@ -230,7 +234,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README change.log
+%doc README change.log %{?with_arith:README.arithmetic}
 %attr(755,root,root) %{_libdir}/libjpeg.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libjpeg.so.62
 
