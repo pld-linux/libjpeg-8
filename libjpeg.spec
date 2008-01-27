@@ -1,7 +1,3 @@
-# TODO
-# - ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/delegates/ljpeg-6b.tar.gz
-# NOTE: it changes ABI! either make it work without ABI breakage, or build
-#       second libjpeg (with lossless support) with different name/soname
 #
 # Conditional build:
 %bcond_with	arith	# arithmetic coding support (changes error codes in ABI, patent problems somewhere)
