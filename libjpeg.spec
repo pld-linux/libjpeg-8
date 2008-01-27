@@ -5,7 +5,7 @@
 #
 # Conditional build:
 %bcond_with	arith	# arithmetic coding support (changes error codes in ABI, patent problems somewhere)
-%bcond_with	crop	# "apply" crop pseudo-patch (changes error codes in ABI, conflicts with arith patch)
+%bcond_with	crop	# lossless cropping support (changes error codes in ABI)
 #
 Summary:	Library for handling different JPEG files
 Summary(de.UTF-8):	Library zum Verarbeiten verschiedener JPEG-Dateien
@@ -25,8 +25,6 @@ Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
 # Source0-md5:	dbd5f3b47ed13132f04c685d608a7547
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
-Source2:	http://sylvana.net/jpegcrop/croppatch.tar.gz
-# Source2-md5:	45d76e4226232439308e2129b64c4ea1
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-arm.patch
 Patch2:		%{name}-include.patch
@@ -34,6 +32,8 @@ Patch3:		%{name}-c++.patch
 Patch4:		%{name}-libtool.patch
 # from http://sylvana.net/jpeg-ari/jpeg-ari-28mar98.tar.gz
 Patch5:		%{name}-arith.patch
+# from http://sylvana.net/jpegcrop/croppatch.tar.gz
+Patch6:		%{name}-crop.patch
 URL:		http://www.ijg.org/
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -186,13 +186,7 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 %patch3 -p1
 %patch4 -p1
 %{?with_arith:%patch5 -p1}
-
-%if %{with crop}
-mkdir croppatch
-gzip -dc %{SOURCE2} | tar xf - -C croppatch
-# evil: jerror.h change breaks error codes in ABI
-cp croppatch/{jerror.h,jpegtran.c,transupp.c,transupp.h} .
-%endif
+%{?with_crop:%patch6 -p1}
 
 cp -f %{_datadir}/libtool/config.sub .
 
