@@ -4,7 +4,7 @@
 #       second libjpeg (with lossless support) with different name/soname
 #
 # Conditional build:
-%bcond_with	crop	# "apply" crop pseudo-patch
+%bcond_with	crop	# "apply" crop pseudo-patch (changes error codes in ABI)
 #
 Summary:	Library for handling different JPEG files
 Summary(de.UTF-8):	Library zum Verarbeiten verschiedener JPEG-Dateien
@@ -184,7 +184,10 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 %patch4 -p1
 
 %if %{with crop}
-gzip -dc %{SOURCE2} | tar xf -
+mkdir croppatch
+gzip -dc %{SOURCE2} | tar xf - -C croppatch
+# evil: jerror.h change breaks error codes in ABI
+cp croppatch/{jerror.h,jpegtran.c,transupp.c,transupp.h} .
 %endif
 
 cp -f %{_datadir}/libtool/config.sub .
