@@ -14,7 +14,7 @@ Summary(tr.UTF-8):	JPEG resimlerini işleme kitaplığı
 Summary(uk.UTF-8):	Бібліотека для обробки різноманітних JPEG-файлів
 Name:		libjpeg
 Version:	6b
-Release:	27
+Release:	28
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
