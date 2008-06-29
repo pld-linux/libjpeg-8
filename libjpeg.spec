@@ -184,8 +184,6 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 %{?with_arith:%patch5 -p1}
 %{?with_crop:%patch6 -p1}
 
-cp -f %{_datadir}/libtool/config.sub .
-
 %build
 %configure \
 	--enable-shared \
