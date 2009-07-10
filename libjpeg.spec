@@ -65,6 +65,7 @@ Summary(tr.UTF-8):	libjpeg için geliştirme kitaplıkları ve başlık dosyalar
 Summary(uk.UTF-8):	Хедери для розробки програм, що використовують libjpeg
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Conflicts:	libjpeg6-devel
 
 %description devel
 The libjpeg-devel package includes the header files necessary for
@@ -113,6 +114,7 @@ Summary(ru.UTF-8):	Статическая библиотека для прогр
 Summary(uk.UTF-8):	Статична бібліотека для програмування з libjpeg
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Conflicts:	libjpeg6-static
 
 %description static
 Static library for developing programs using libjpeg.
@@ -138,6 +140,7 @@ Summary(fr.UTF-8):	Clients simples pour manipuler des images JPEG
 Summary(pl.UTF-8):	Kilka prostych programów do manipulowania na plikach JPEG
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Conflicts:	libjpeg6-progs
 
 %description progs
 Simple clients for manipulating JPEG images. Libjpeg client programs
