@@ -1,8 +1,3 @@
-#
-# Conditional build:
-%bcond_with	arith	# arithmetic coding support (changes error codes in ABI, patent problems somewhere)
-%bcond_with	crop	# lossless cropping support (changes error codes in ABI)
-#
 Summary:	Library for handling different JPEG files
 Summary(de.UTF-8):	Library zum Verarbeiten verschiedener JPEG-Dateien
 Summary(es.UTF-8):	Biblioteca para manipulación de diferentes archivos JPEGs
@@ -13,23 +8,14 @@ Summary(ru.UTF-8):	Библиотека для обработки различн
 Summary(tr.UTF-8):	JPEG resimlerini işleme kitaplığı
 Summary(uk.UTF-8):	Бібліотека для обробки різноманітних JPEG-файлів
 Name:		libjpeg
-Version:	6b
-Release:	28
+Version:	7
+Release:	1
 License:	distributable
 Group:		Libraries
-Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
-# Source0-md5:	dbd5f3b47ed13132f04c685d608a7547
+Source0:	http://www.ijg.org/files/jpegsrc.v%{version}.tar.gz
+# Source0-md5:	382ef33b339c299b56baf1296cda9785
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
-Patch0:		%{name}-DESTDIR.patch
-Patch1:		%{name}-arm.patch
-Patch2:		%{name}-include.patch
-Patch3:		%{name}-c++.patch
-Patch4:		%{name}-libtool.patch
-# from http://sylvana.net/jpeg-ari/jpeg-ari-28mar98.tar.gz
-Patch5:		%{name}-arith.patch
-# from http://sylvana.net/jpegcrop/croppatch.tar.gz
-Patch6:		%{name}-crop.patch
 URL:		http://www.ijg.org/
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -176,21 +162,13 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 
 %prep
 %setup -q -n jpeg-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%{?with_arith:%patch5 -p1}
-%{?with_crop:%patch6 -p1}
 
 %build
 %configure \
 	--enable-shared \
 	--enable-static
 
-%{__make} \
-	libdir=%{_libdir}
+%{__make}
 
 LD_PRELOAD=$PWD/.libs/%{name}.so \
 %{__make} test
@@ -199,18 +177,14 @@ LD_PRELOAD=$PWD/.libs/%{name}.so \
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 
-%{__make} install install-headers install-lib \
-	libdir=%{_libdir} \
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install jversion.h $RPM_BUILD_ROOT%{_includedir}
 
 # remove HAVE_STD{DEF,LIB}_H
 # (not necessary but may generate warnings confusing autoconf)
-(cd $RPM_BUILD_ROOT%{_includedir}
-grep -v 'HAVE_STD..._H' jconfig.h > jconfig.h.new
-mv -f jconfig.h.new jconfig.h
-)
+sed -i -e 's#.*HAVE_STD..._H.*##g' $RPM_BUILD_ROOT%{_includedir}/jconfig.h
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
@@ -222,13 +196,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README change.log %{?with_arith:README.arithmetic}
+%doc README change.log
 %attr(755,root,root) %{_libdir}/libjpeg.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libjpeg.so.62
+%attr(755,root,root) %ghost %{_libdir}/libjpeg.so.7
 
 %files devel
 %defattr(644,root,root,755)
-%doc {libjpeg,structure}.doc
+%doc libjpeg.txt structure.txt
 %attr(755,root,root) %{_libdir}/libjpeg.so
 %{_libdir}/libjpeg.la
 %{_includedir}/jconfig.h
