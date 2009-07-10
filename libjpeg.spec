@@ -165,6 +165,7 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 
 %build
 %configure \
+	--disable-silent-rules \
 	--enable-shared \
 	--enable-static
 
