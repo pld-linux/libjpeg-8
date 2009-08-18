@@ -9,13 +9,14 @@ Summary(tr.UTF-8):	JPEG resimlerini işleme kitaplığı
 Summary(uk.UTF-8):	Бібліотека для обробки різноманітних JPEG-файлів
 Name:		libjpeg
 Version:	7
-Release:	1
+Release:	2
 License:	distributable
 Group:		Libraries
 Source0:	http://www.ijg.org/files/jpegsrc.v%{version}.tar.gz
 # Source0-md5:	382ef33b339c299b56baf1296cda9785
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
+Patch0:		%{name}-maxmem-sysconf.patch
 URL:		http://www.ijg.org/
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -165,6 +166,7 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 
 %prep
 %setup -q -n jpeg-%{version}
+%patch0 -p1
 
 %build
 %configure \
