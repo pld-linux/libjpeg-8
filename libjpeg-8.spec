@@ -1,3 +1,6 @@
+# NOTE: this is IJG libjpeg version 8, default build (8 bits per sample);
+# it's named libjpeg-8 to avoid confusion with libjpeg12 package,
+# which is latest version of IJG libjpeg built with 12 bits per sample.
 Summary:	Library for handling different JPEG files
 Summary(de.UTF-8):	Library zum Verarbeiten verschiedener JPEG-Dateien
 Summary(es.UTF-8):	Biblioteca para manipulación de diferentes archivos JPEGs
@@ -7,16 +10,16 @@ Summary(pt_BR.UTF-8):	Biblioteca para manipulação de diferentes arquivos JPEGs
 Summary(ru.UTF-8):	Библиотека для обработки различных JPEG-файлов
 Summary(tr.UTF-8):	JPEG resimlerini işleme kitaplığı
 Summary(uk.UTF-8):	Бібліотека для обробки різноманітних JPEG-файлів
-Name:		libjpeg
+Name:		libjpeg-8
 Version:	8d
 Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	http://www.ijg.org/files/jpegsrc.v%{version}.tar.gz
 # Source0-md5:	52654eb3b2e60c35731ea8fc87f1bd29
-Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
+Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/libjpeg-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
-Patch0:		%{name}-maxmem-sysconf.patch
+Patch0:		libjpeg-maxmem-sysconf.patch
 URL:		http://www.ijg.org/
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
