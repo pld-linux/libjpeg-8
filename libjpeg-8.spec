@@ -11,12 +11,12 @@ Summary(ru.UTF-8):	Библиотека для обработки различн
 Summary(tr.UTF-8):	JPEG resimlerini işleme kitaplığı
 Summary(uk.UTF-8):	Бібліотека для обробки різноманітних JPEG-файлів
 Name:		libjpeg-8
-Version:	8d
+Version:	8d1
 Release:	1
 License:	distributable
 Group:		Libraries
-Source0:	http://www.ijg.org/files/jpegsrc.v%{version}.tar.gz
-# Source0-md5:	52654eb3b2e60c35731ea8fc87f1bd29
+Source0:	http://jpegclub.org/support/files/jpegsrc.v%{version}.tar.gz
+# Source0-md5:	21684d9613d5ec670ec74de95c32cc00
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/libjpeg-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
 Patch0:		libjpeg-maxmem-sysconf.patch
@@ -205,7 +205,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README change.log
+%doc README README.8d1 change.log
 %attr(755,root,root) %{_libdir}/libjpeg.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libjpeg.so.8
 
